@@ -135,6 +135,12 @@ struct DLL_PUBLIC LoadPage {
 
 	//! Whether to use the proxy for resolving hostnames
 	bool proxyHostNameLookup;
+
+	// CDR-7896: Added to support --prevent-internet flag. When true, the QNetworkAccessManager
+	// for each loaded page will be set to NotAccessible, blocking all outbound HTTP/HTTPS requests
+	// made by the rendered HTML content (e.g. remote images, scripts, stylesheets).
+	//! Should internet access be prevented
+	bool preventInternet;
 };
 
 DLL_PUBLIC LoadPage::LoadErrorHandling strToLoadErrorHandling(const char * s, bool * ok=0);

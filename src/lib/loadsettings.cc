@@ -146,7 +146,7 @@ LoadPage::LoadPage():
 	loadErrorHandling(abort),
 	mediaLoadErrorHandling(ignore),
 	cacheDir(""),
-	proxyHostNameLookup(false) {};
-
+	proxyHostNameLookup(false),
+	preventInternet(false) {}; // CDR-7896: preventInternet initialized to false (internet allowed by default)
 }
 }

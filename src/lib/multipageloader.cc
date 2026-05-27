@@ -224,6 +224,10 @@ ResourceObject::ResourceObject(MultiPageLoaderPrivate & mpl, const QUrl & u, con
 
 	networkAccessManager.setCookieJar(multiPageLoader.cookieJar);
 
+	// CDR-7896: If preventInternet is set, block all outbound network access for this page
+	if (settings.preventInternet)
+        networkAccessManager.setNetworkAccessible(QNetworkAccessManager::NotAccessible);
+
 	//If we must use a proxy, create a host of objects
 	if (!settings.proxy.host.isEmpty()) {
 		QNetworkProxy proxy;

@@ -240,4 +240,7 @@ void CommandLineParserBase::addPageLoadArgs(LoadPage & s) {
 	addarg("checkbox-checked-svg", 0, "Use this SVG file when rendering checked checkboxes", new QStrSetter(s.checkboxCheckedSvg, "path" ,""));
 	addarg("radiobutton-svg", 0, "Use this SVG file when rendering unchecked radiobuttons", new QStrSetter(s.radiobuttonSvg, "path", ""));
 	addarg("radiobutton-checked-svg", 0, "Use this SVG file when rendering checked radiobuttons", new QStrSetter(s.radiobuttonCheckedSvg, "path", ""));
+
+	// CDR-7896: New CLI argument --prevent-internet; sets preventInternet=true to block network access during rendering
+	addarg("prevent-internet",0,"Prevent web pages from accessing the internet", new ConstSetter<bool>(s.preventInternet,true));
 }
